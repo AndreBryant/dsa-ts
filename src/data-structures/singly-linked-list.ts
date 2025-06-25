@@ -1,10 +1,9 @@
 class MyNode {
-  constructor(
-    public value: number | null = null,
-    public next: MyNode | null = null
-  ) {
+  public value: number | null;
+  public next: MyNode | null;
+  constructor(value: number | null = null, next: MyNode | null = null) {
     this.value = value;
-    this.next = null;
+    this.next = next;
   }
 }
 

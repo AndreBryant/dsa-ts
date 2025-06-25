@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from './data-structures/linked-list';
+import { SinglyLinkedList } from './data-structures/singly-linked-list';
 
 const singlyLinkedList = new SinglyLinkedList(1);
 
