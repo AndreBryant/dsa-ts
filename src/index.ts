@@ -1,5 +1,5 @@
-import { SinglyLinkedList } from './data-structures/singly-linked-list';
-import { DoublyLinkedList } from './data-structures/doubly-linked-list';
+import { SinglyLinkedList } from './data-structures/linked-lists/singly-linked-list';
+import { DoublyLinkedList } from './data-structures/linked-lists/doubly-linked-list';
 
 const dll_demo = () => {
   const ds = new DoublyLinkedList(1);

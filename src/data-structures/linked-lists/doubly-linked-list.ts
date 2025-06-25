@@ -18,7 +18,7 @@ export class DoublyLinkedList {
   private head: DoublyNode | null;
   private tail: DoublyNode | null;
 
-  constructor(value: number | null) {
+  constructor(value: number | null = null) {
     this.head = new DoublyNode(value);
     this.tail = this.head;
   }
@@ -50,9 +50,8 @@ export class DoublyLinkedList {
   public remove(value: number) {
     if (this.head === null) return false;
 
-    let n = this.head;
-    if (n.value === value) {
-      if (n === this.head) {
+    if (value === this.head.value) {
+      if (this.head === this.tail) {
         this.head = null;
         this.tail = null;
       } else {
@@ -62,7 +61,9 @@ export class DoublyLinkedList {
       return true;
     }
 
-    while (n.next !== null && n.value !== value) {
+    let n = this.head.next;
+
+    while (n !== null && n.value !== value) {
       n = n.next;
     }
 
