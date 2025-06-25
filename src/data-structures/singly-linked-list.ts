@@ -1,24 +1,24 @@
-class MyNode {
+class SinglyNode {
   public value: number | null;
-  public next: MyNode | null;
-  constructor(value: number | null = null, next: MyNode | null = null) {
+  public next: SinglyNode | null;
+  constructor(value: number | null = null, next: SinglyNode | null = null) {
     this.value = value;
     this.next = next;
   }
 }
 
 export class SinglyLinkedList {
-  private head: MyNode | null;
-  private tail: MyNode | null;
+  private head: SinglyNode | null;
+  private tail: SinglyNode | null;
 
   constructor(public value: number | null = null) {
-    this.head = new MyNode(value);
+    this.head = new SinglyNode(value);
     this.tail = this.head;
   }
 
   //   void: O(n)
   public insert(value: number) {
-    const n = new MyNode(value);
+    const n = new SinglyNode(value);
     if (this.head === null) {
       this.head = n;
       this.tail = n;
