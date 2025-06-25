@@ -1,6 +1,6 @@
 # Data Structures and Algorithm in Typescript
 
-because why not
+because why not <br/>
 jk pls give me high paying job
 
 ### Main Reference
