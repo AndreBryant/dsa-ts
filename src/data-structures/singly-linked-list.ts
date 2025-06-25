@@ -11,7 +11,7 @@ export class SinglyLinkedList {
   private head: SinglyNode | null;
   private tail: SinglyNode | null;
 
-  constructor(public value: number | null = null) {
+  constructor(value: number | null = null) {
     this.head = new SinglyNode(value);
     this.tail = this.head;
   }
