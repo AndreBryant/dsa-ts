@@ -42,4 +42,29 @@ export class BinarySearchTree {
     else if (value < this.root.value) this.contains(this.root.left, value);
     else this.contains(this.root.right, value);
   }
+
+  public remove(value: number) {
+    /***
+     * 4 cases to consider
+     * 1. the value to remove is a leaf (no left and right children)
+     * 2. the valeu to remove has a right subtree but no left subtree
+     * 3. * vice versa
+     * 4. the value has both left and right subtree (we promote the largest value in the left subtree; but why?)
+     */
+    // TODO
+  }
+
+  private findParent(value: number, root: BSTNode | null = this.root) {
+    if (value === root.value) return null;
+
+    if (value < root.value) {
+      if (root.left === null) return null;
+      else if (root.left.value === value) return root;
+      else this.findParent(value, root.left);
+    } else {
+      if (root.right === null) return null;
+      else if (root.right.value === value) return root;
+      else return this.findParent(value, root.right);
+    }
+  }
 }
