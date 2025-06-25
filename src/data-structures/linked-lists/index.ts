@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from './singly-linked-list';
-import { DoublyLinkedList } from './doubly-linked-list';
+import { SinglyLinkedList } from './SinglyLinkedList';
+import { DoublyLinkedList } from './DoublyLinkedList';
 
 export { SinglyLinkedList, DoublyLinkedList };
