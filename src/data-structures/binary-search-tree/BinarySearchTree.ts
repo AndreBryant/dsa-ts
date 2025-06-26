@@ -16,8 +16,10 @@ class BSTNode {
 
 export class BinarySearchTree {
   private root: BSTNode | null;
+  private count: number;
   constructor(value: number | null = null) {
     this.root = new BSTNode(value);
+    this.count = 0;
   }
 
   public insert(value: number) {
@@ -33,6 +35,8 @@ export class BinarySearchTree {
       if (current.right === null) current.right = new BSTNode(value);
       else this.insertNode(current.right, value);
     }
+
+    this.count += 1;
   }
 
   public contains(root: BSTNode = this.root, value: number) {
@@ -51,7 +55,31 @@ export class BinarySearchTree {
      * 3. * vice versa
      * 4. the value has both left and right subtree (we promote the largest value in the left subtree; but why?)
      */
-    // TODO
+
+    const nodeToRemove = this.findNode(value);
+    if (nodeToRemove === null) return false;
+
+    const parent = this.findParent(value);
+    if (this.count == 1) {
+      this.root = null;
+    } else if (nodeToRemove.left === null && nodeToRemove.right === null) {
+      if (nodeToRemove.value < parent.value) parent.left = null;
+      else parent.right = null;
+    } else if (nodeToRemove.left === null && nodeToRemove.right !== null) {
+      if (nodeToRemove.value < parent.value) parent.left = nodeToRemove.right;
+      else parent.right = nodeToRemove.right;
+    } else if (nodeToRemove.left !== null && nodeToRemove.right === null) {
+      if (nodeToRemove.value < parent.value) parent.left = nodeToRemove.left;
+      else parent.right = nodeToRemove.left;
+    } else {
+      let largestValue = nodeToRemove.left;
+      while (largestValue.right !== null) largestValue = largestValue.right;
+
+      this.findParent(largestValue.value).right = null;
+      nodeToRemove.value = largestValue.value;
+    }
+    this.count -= 1;
+    return true;
   }
 
   private findParent(value: number, root: BSTNode | null = this.root) {
@@ -66,5 +94,23 @@ export class BinarySearchTree {
       else if (root.right.value === value) return root;
       else return this.findParent(value, root.right);
     }
+  }
+
+  private findNode(value: number, root: BSTNode | null = this.root) {
+    if (root === null) return null;
+
+    if (root.value === value) return root;
+    else if (value < root.value) this.findNode(value, root.left);
+    else this.findNode(value, root.right);
+  }
+
+  public findMin(root: BSTNode | null = this.root) {
+    if (root.left === null) return root.value;
+    return this.findMin(root.left);
+  }
+
+  public findMax(root: BSTNode | null = this.root) {
+    if (root.right === null) return root.value;
+    return this.findMax(root.right);
   }
 }
