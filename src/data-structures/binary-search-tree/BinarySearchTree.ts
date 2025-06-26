@@ -113,4 +113,41 @@ export class BinarySearchTree {
     if (root.right === null) return root.value;
     return this.findMax(root.right);
   }
+
+  public traverse(
+    mode: 'pre' | 'post' | 'in',
+    root: BSTNode | null = this.root
+  ) {
+    console.log('Start of traversal: ' + mode + 'order');
+
+    switch (mode) {
+      case 'pre':
+        if (root !== null) {
+          process.stdout.write(root.value.toString());
+          this.traverse(mode, root.left);
+          this.traverse(mode, root.right);
+        }
+        break;
+
+      case 'post': {
+        if (root !== null) {
+          this.traverse(mode, root.left);
+          this.traverse(mode, root.right);
+          process.stdout.write(root.value.toString());
+        }
+        break;
+      }
+
+      case 'in': {
+        if (root !== null) {
+          this.traverse(mode, root.left);
+          process.stdout.write(root.value.toString());
+          this.traverse(mode, root.right);
+        }
+        break;
+      }
+    }
+
+    console.log('\nEnd of traversal: ' + mode + 'order');
+  }
 }
