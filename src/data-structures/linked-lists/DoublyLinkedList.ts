@@ -23,7 +23,7 @@ export class DoublyLinkedList {
     this.tail = this.head;
   }
 
-  public insert(value: number) {
+  public insert(value: number): void {
     const n = new DoublyNode(value);
     if (this.head === null) {
       this.head = n;
@@ -35,7 +35,7 @@ export class DoublyLinkedList {
     }
   }
 
-  public contains(value: number) {
+  public contains(value: number): boolean {
     let n = this.head;
 
     while (n !== null && n.value !== value) {
@@ -47,7 +47,7 @@ export class DoublyLinkedList {
     return true;
   }
 
-  public remove(value: number) {
+  public remove(value: number): boolean {
     if (this.head === null) return false;
 
     if (value === this.head.value) {
@@ -80,7 +80,7 @@ export class DoublyLinkedList {
     return false;
   }
 
-  public traverse() {
+  public traverse(): void {
     console.log('Start of Traversal');
 
     let n = this.head;
@@ -94,7 +94,7 @@ export class DoublyLinkedList {
     console.log('null\nEnd of traversal');
   }
 
-  public reverseTraversal() {
+  public reverseTraversal(): void {
     console.log('Start of Reverse Traversal');
 
     let n = this.tail;

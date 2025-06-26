@@ -17,7 +17,7 @@ export class SinglyLinkedList {
   }
 
   //   void: O(n)
-  public insert(value: number) {
+  public insert(value: number): void {
     const n = new SinglyNode(value);
     if (this.head === null) {
       this.head = n;
@@ -29,7 +29,7 @@ export class SinglyLinkedList {
   }
 
   //   boolean: O(n)
-  public contains(value: number) {
+  public contains(value: number): boolean {
     let n = this.head;
 
     while (n !== null && n.value !== value) {
@@ -42,7 +42,7 @@ export class SinglyLinkedList {
   }
 
   //   void: returns true if success otherwise, a fail
-  public remove(value: number) {
+  public remove(value: number): boolean {
     /*
         Cases to consider
         1 empty list
@@ -88,7 +88,7 @@ export class SinglyLinkedList {
   }
 
   //   void
-  public traverse() {
+  public traverse(): void {
     console.log('Start of Traversal');
 
     let n = this.head;
@@ -102,7 +102,7 @@ export class SinglyLinkedList {
     console.log('null\nEnd of traversal');
   }
 
-  public reverseTraversal() {
+  public reverseTraversal(): void {
     console.log('Start of Reverse Traversal');
 
     process.stdout.write('Values: ');

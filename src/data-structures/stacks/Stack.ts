@@ -7,15 +7,15 @@ export class Stack<T> {
     this.items = [];
   }
 
-  public push(item: T) {
+  public push(item: T): void {
     this.items.push(item);
   }
 
-  public pop() {
+  public pop(): T {
     return this.items.pop();
   }
 
-  public size() {
+  public size(): number {
     return this.items.length;
   }
 }

@@ -9,15 +9,17 @@ export class Heap {
     this.heap = [];
   }
 
-  public add(value: number) {
+  public add(value: number): void {
     this.heap[this.count++] = value;
 
     this.heapify();
   }
 
-  public delete(value: number) {}
+  public delete(value: number): boolean {
+    return true;
+  }
 
-  public contains(value: number) {
+  public contains(value: number): boolean {
     for (let i = 0; i < this.count; i++) {
       if (this.heap[i] === value) return true;
     }
@@ -25,9 +27,11 @@ export class Heap {
     return false;
   }
 
-  public betterContains(value: number) {}
+  public betterContains(value: number): boolean {
+    return true;
+  }
 
-  private heapify() {
+  private heapify(): void {
     let i = this.count - 1;
     if (this.mode === 'min') {
       while (i > 0 && this.heap[i] < this.heap[(i - 1) / 2]) {
@@ -42,7 +46,7 @@ export class Heap {
     }
   }
 
-  private swap(a: number, b: number) {
+  private swap(a: number, b: number): void {
     let temp = a;
     a = b;
     b = temp;

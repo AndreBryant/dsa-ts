@@ -22,12 +22,12 @@ export class BinarySearchTree {
     this.count = 0;
   }
 
-  public insert(value: number) {
+  public insert(value: number): void {
     if (this.root === null) this.root = new BSTNode(value);
     else this.insertNode(this.root, value);
   }
 
-  private insertNode(current: BSTNode, value: number) {
+  private insertNode(current: BSTNode, value: number): void {
     if (value < current.value) {
       if (current.left === null) current.left = new BSTNode(value);
       else this.insertNode(current.left, value);
@@ -39,7 +39,7 @@ export class BinarySearchTree {
     this.count += 1;
   }
 
-  public contains(root: BSTNode = this.root, value: number) {
+  public contains(root: BSTNode = this.root, value: number): boolean {
     if (this.root === null) return false;
 
     if (this.root.value === value) return true;
@@ -47,7 +47,7 @@ export class BinarySearchTree {
     else this.contains(this.root.right, value);
   }
 
-  public remove(value: number) {
+  public remove(value: number): boolean {
     /***
      * 4 cases to consider
      * 1. the value to remove is a leaf (no left and right children)
@@ -82,7 +82,7 @@ export class BinarySearchTree {
     return true;
   }
 
-  private findParent(value: number, root: BSTNode | null = this.root) {
+  private findParent(value: number, root: BSTNode | null = this.root): BSTNode {
     if (value === root.value) return null;
 
     if (value < root.value) {
@@ -96,7 +96,7 @@ export class BinarySearchTree {
     }
   }
 
-  private findNode(value: number, root: BSTNode | null = this.root) {
+  private findNode(value: number, root: BSTNode | null = this.root): BSTNode {
     if (root === null) return null;
 
     if (root.value === value) return root;
@@ -104,12 +104,12 @@ export class BinarySearchTree {
     else this.findNode(value, root.right);
   }
 
-  public findMin(root: BSTNode | null = this.root) {
+  public findMin(root: BSTNode | null = this.root): number {
     if (root.left === null) return root.value;
     return this.findMin(root.left);
   }
 
-  public findMax(root: BSTNode | null = this.root) {
+  public findMax(root: BSTNode | null = this.root): number {
     if (root.right === null) return root.value;
     return this.findMax(root.right);
   }
@@ -117,7 +117,7 @@ export class BinarySearchTree {
   public traverse(
     mode: 'pre' | 'post' | 'in',
     root: BSTNode | null = this.root
-  ) {
+  ): void {
     console.log('Start of traversal: ' + mode + 'order');
 
     switch (mode) {
