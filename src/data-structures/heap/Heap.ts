@@ -15,6 +15,7 @@ export class Heap {
     this.heapify();
   }
 
+  // TODO: heap delete
   public delete(value: number): boolean {
     return true;
   }
@@ -28,7 +29,46 @@ export class Heap {
   }
 
   public betterContains(value: number): boolean {
-    return true;
+    let nodes = 1;
+    let start = 0;
+
+    while (start < this.count) {
+      start = nodes - 1;
+      let end = nodes + start;
+      let count = 0;
+
+      while (start < this.count && start < end) {
+        if (this.heap[start] === value) {
+          return true;
+        } else if (
+          value > this.heap[this.parentIndex(start)] &&
+          value < this.heap[start]
+        ) {
+          count = count + 1;
+        }
+
+        start = start + 1;
+      }
+
+      if (count === nodes) {
+        return false;
+      }
+      nodes = nodes * 2;
+    }
+
+    return false;
+  }
+
+  private parentIndex(childIndex: number) {
+    return (childIndex - 1) / 2;
+  }
+
+  private leftChildIndex(parentIndex: number) {
+    return 2 * parentIndex + 1;
+  }
+
+  private rightChildIndex(parentIndex: number) {
+    return 2 * parentIndex + 2;
   }
 
   private heapify(): void {
