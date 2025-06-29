@@ -17,6 +17,27 @@ export class Heap {
 
   // TODO: heap delete
   public delete(value: number): boolean {
+    let index = this.heap.indexOf(value);
+
+    if (index < 0) {
+      return false;
+    }
+
+    this.count = this.count - 1;
+    this.heap[index] = this.heap[this.count];
+
+    let left = 2 * index + 1;
+    let right = 2 * index + 2;
+
+    while (left < this.count && this.heap[index] > this.heap[right]) {
+      if (this.heap[left] < this.heap[right]) {
+        this.swap(this.heap[left], this.heap[index]);
+        index = left;
+      } else {
+        this.swap(this.heap[right], this.heap[index]);
+        index = right;
+      }
+    }
     return true;
   }
 
