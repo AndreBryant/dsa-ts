@@ -15,7 +15,6 @@ export class Heap {
     this.heapify();
   }
 
-  // TODO: heap delete
   public delete(value: number): boolean {
     let index = this.heap.indexOf(value);
 
@@ -26,8 +25,8 @@ export class Heap {
     this.count = this.count - 1;
     this.heap[index] = this.heap[this.count];
 
-    let left = 2 * index + 1;
-    let right = 2 * index + 2;
+    let left = this.leftChildIndex(index);
+    let right = this.rightChildIndex(index);
 
     while (left < this.count && this.heap[index] > this.heap[right]) {
       if (this.heap[left] < this.heap[right]) {
